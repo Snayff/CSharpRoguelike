@@ -51,7 +51,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>CSharpRoguelike.Program</StartupObject>
+    <StartupObject>CSharpRoguelike.Game</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -83,6 +83,7 @@
     <Reference Include="SadConsole, Version=7.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\SadConsole.7.1.0\lib\net\SadConsole.dll</HintPath>
     </Reference>
+    <Reference Include="System" />
     <Reference Include="Troschuetz.Random, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2f204b7110a52060, processorArchitecture=MSIL">
       <HintPath>packages\Troschuetz.Random.4.3.0\lib\net461\Troschuetz.Random.dll</HintPath>
     </Reference>
@@ -100,7 +101,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Game.cs" />
+    <Compile Include="Code\Core\CustomConsoles.cs" />
+    <Compile Include="Code\Core\Game.cs" />
+    <Compile Include="Code\Core\InputController.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">

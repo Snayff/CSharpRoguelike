@@ -6,7 +6,7 @@
    <Modules>
     <Module Name="csharproguelike.exe">
      <Messages>
-      <Message TypeName="MarkAssembliesWithAssemblyVersion" Category="Microsoft.Design" CheckId="CA1016" Status="Active" Created="2018-10-25 14:38:34Z" FixCategory="NonBreaking">
+      <Message TypeName="MarkAssembliesWithAssemblyVersion" Category="Microsoft.Design" CheckId="CA1016" Status="Active" Created="2018-10-25 19:16:07Z" FixCategory="NonBreaking">
        <Issue Certainty="95" Level="Error">Add an AssemblyVersion attribute to 'CSharpRoguelike.exe'.</Issue>
       </Message>
      </Messages>
