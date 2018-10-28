@@ -1,10 +1,11 @@
-﻿using System;
-using Microsoft.Xna.Framework.Input;
+﻿using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
+using Rectangle = Microsoft.Xna.Framework.Rectangle;
 using SadConsole;
 using Console = SadConsole.Console;
 using SadConsole.Entities;
 using SadConsole.Surfaces;
+using GoRogue.MapViews;
 
 namespace CSharpRoguelike.CustomConsole
 {
@@ -12,19 +13,20 @@ namespace CSharpRoguelike.CustomConsole
     {
         // The console here acts like a playing field for our entities. You could draw some sort of area for the
         // entity to walk around on. The console also gets focused with the keyboard and accepts keyboard events.
-        private static EntityType.Player player;
+        public static EntityType.Player player;
         private Basic borderSurface;
 
-        public EntityConsole(int width, int height) : base(width, height)
+        public EntityConsole(int width, int height, int viewWidth, int viewHeight) : base(width, height)
         {
             Width = width;
             Height = height;
             UseKeyboard = true;
             IsVisible = true;
             Fill(Color.White, Color.Black, 0);
+            ViewPort = new Rectangle(Position.X, Position.Y, viewWidth, viewHeight);
 
             //draw border
-            borderSurface = new Basic(width + 2, height + 2, base.Font);
+            borderSurface = new Basic(viewWidth + 2, viewHeight + 2, base.Font);
             borderSurface.DrawBox(new Rectangle(0, 0, borderSurface.Width, borderSurface.Height), new Cell(Color.White, Color.Black), null, SurfaceBase.ConnectedLineThin);
             borderSurface.Position = new Point(-1, -1);
 
@@ -95,7 +97,8 @@ namespace CSharpRoguelike.CustomConsole
         private static void CreatePlayer()
         {
             player = new EntityType.Player();
-            player.Position = new Point(10, 10); //should this be in player class params?
+            player.Position = new Point(1,1);
+            //new Point(0, 0); //should this be in player class params?
             player.PreviousPosition = player.Position;
         }
     }

@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework;
 namespace CSharpRoguelike.Map.Tile
 {
     //Tilebase inherits from SadConsole.Cell which is a class that all surfaces use in rendering
-    class TileBase : Cell
+    abstract class TileBase : Cell
     {
         public bool IsBlockingMove;
         public bool IsBlockingSight;
@@ -18,7 +18,7 @@ namespace CSharpRoguelike.Map.Tile
 
     class Wall : TileBase
     {
-        public Wall() : base(Color.White, Color.Gray, 176)
+        public Wall() : base(Color.White, Color.Gray, '#' )
         {
             IsBlockingMove = true;
             IsBlockingSight = true; 
@@ -27,10 +27,11 @@ namespace CSharpRoguelike.Map.Tile
 
     class Floor : TileBase
     {
-        public Floor() : base(new Color(25, 25, 25), Color.Black, 46)
+        public Floor() : base(new Color(25, 25, 25), Color.Black, ' ')
         {
             IsBlockingMove = false;
             IsBlockingSight = false;
+            
         }
     }
 } 

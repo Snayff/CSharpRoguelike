@@ -2,7 +2,7 @@
 
 namespace CSharpRoguelike.EntityType
 {
-    public class EntityBase : SadConsole.Entities.Entity 
+    public abstract class EntityBase : SadConsole.Entities.Entity 
     {
         public EntityBase(Color foreground, Color background, int glyph, int width = 1, int height = 1) : base(width, height)
         {
