@@ -1,14 +1,12 @@
-using System;
 using SadConsole;
 using Console = SadConsole.Console;
-using GoRogue;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using CSharpRoguelike.Code.CustomConsoles;
+using CSharpRoguelike.CustomConsole;
+
 
 namespace CSharpRoguelike
 {
-    class Game
+    class GameLoop
     {
 
         //All sizes are in cells. Cell size is based on font dimensions/size. 
@@ -16,12 +14,14 @@ namespace CSharpRoguelike
         private static readonly int screenWidth = 200;
         private static readonly int screenHeight = 70;
 
+        //border info
+        private static readonly int borderSize = 2;
+
         //info console info
         private static readonly int infoWidth = 30;
         private static readonly int infoHeight = screenHeight;
         private static Point infoPosition = new Point(screenWidth - infoWidth, 0);
         private static Console infoConsole;
-
 
         //message console info
         private static readonly int messageWidth = screenWidth - infoWidth;
@@ -30,14 +30,14 @@ namespace CSharpRoguelike
         private static Window messageConsole;
 
         //map console info
-        private static readonly int viewportWidth = screenWidth - infoWidth;
-        private static readonly int viewportHeight = screenHeight -  messageHeight;
+        private static readonly int viewportWidth = screenWidth - infoWidth - borderSize;
+        private static readonly int viewportHeight = screenHeight -  messageHeight - borderSize;
         private static readonly int mapWidth = 100;
         private static readonly int mapHeight = 100;
-        private static Point mapPosition = new Point(0, 0);
+        private static Point mapPosition = new Point(0 + borderSize, 0 + borderSize);
         private static Console mapConsole;
 
-
+        
 
         static void Main(string[] args)
         {
@@ -70,15 +70,13 @@ namespace CSharpRoguelike
         private static void Init()
         {
             // Set our new console as the thing to render and process
-            SadConsole.Global.CurrentScreen = new ScreenObject();
+            Global.CurrentScreen = new ScreenObject();
 
             //Map Console
-            mapConsole = new EntityConsole(); //mapWidth, mapHeight
-            mapConsole.ViewPort = new Microsoft.Xna.Framework.Rectangle(mapPosition.X, mapPosition.Y, viewportWidth, viewportHeight);
+            mapConsole = new EntityConsole(mapWidth, mapHeight);
             mapConsole.Position = mapPosition;
-            mapConsole.Fill(Color.White, Color.Black, 0);
-            SadConsole.Global.CurrentScreen.Children.Add(mapConsole);
-            mapConsole.IsVisible = true;
+            mapConsole.ViewPort = new Microsoft.Xna.Framework.Rectangle(mapPosition.X, mapPosition.Y, viewportWidth, viewportHeight);
+            Global.CurrentScreen.Children.Add(mapConsole);
             Global.FocusedConsoles.Set(mapConsole);
 
             //Info Console
@@ -86,17 +84,18 @@ namespace CSharpRoguelike
             infoConsole.Position = infoPosition;
             infoConsole.Fill(Color.White, Color.Orange, 0);
             infoConsole.Print(1, 1, "Info");
-            SadConsole.Global.CurrentScreen.Children.Add(infoConsole);
+            Global.CurrentScreen.Children.Add(infoConsole);
 
             //Message Console
             messageConsole = new SadConsole.Window(messageWidth, messageHeight);
             messageConsole.Position = messagePosition;
             messageConsole.Fill(Color.White, Color.Purple, 0);
             messageConsole.Print(1, 1, "Message");
-            SadConsole.Global.CurrentScreen.Children.Add(messageConsole);
+            Global.CurrentScreen.Children.Add(messageConsole);
             messageConsole.Show(); //as its a window need to declare its visible
             
         }
+
 
 
     }

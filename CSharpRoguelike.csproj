@@ -51,7 +51,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>CSharpRoguelike.Game</StartupObject>
+    <StartupObject>CSharpRoguelike.GameLoop</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -101,9 +101,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Code\Core\CustomConsoles.cs" />
-    <Compile Include="Code\Core\Game.cs" />
+    <Compile Include="Code\Core\CustomConsole.cs" />
+    <Compile Include="Code\Core\GameLoop.cs" />
     <Compile Include="Code\Core\InputController.cs" />
+    <Compile Include="Code\Core\Screen.cs" />
+    <Compile Include="Code\Entity\EntityType.cs" />
+    <Compile Include="Code\Map\Map.cs" />
+    <Compile Include="Code\Map\Tile.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">

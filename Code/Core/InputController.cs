@@ -9,7 +9,7 @@ using SadConsole;
 using SadConsole.Entities;
 using SadConsole.Surfaces;
 
-namespace CSharpRoguelike.Code.Core
+namespace CSharpRoguelike.Entity.Core
 {
     public class InputController
     {

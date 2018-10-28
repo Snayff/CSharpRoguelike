@@ -6,15 +6,52 @@
    <Modules>
     <Module Name="csharproguelike.exe">
      <Messages>
-      <Message TypeName="MarkAssembliesWithAssemblyVersion" Category="Microsoft.Design" CheckId="CA1016" Status="Active" Created="2018-10-25 19:16:07Z" FixCategory="NonBreaking">
+      <Message TypeName="MarkAssembliesWithAssemblyVersion" Category="Microsoft.Design" CheckId="CA1016" Status="Active" Created="2018-10-28 14:46:12Z" FixCategory="NonBreaking">
        <Issue Certainty="95" Level="Error">Add an AssemblyVersion attribute to 'CSharpRoguelike.exe'.</Issue>
       </Message>
      </Messages>
+     <Namespaces>
+      <Namespace Name="CSharpRoguelike.EntityType">
+       <Types>
+        <Type Name="Actor" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ComVisibleTypeBaseTypesShouldBeComVisible" Category="Microsoft.Interoperability" CheckId="CA1405" Status="Active" Created="2018-10-28 14:46:12Z" FixCategory="DependsOnFix">
+           <Issue Certainty="90" Level="Error">'Actor' is marked ComVisible(true) but has the following ComVisible(false) types in its object hierarchy: 'Entity', 'ScreenObject'</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="EntityBase" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ComVisibleTypeBaseTypesShouldBeComVisible" Category="Microsoft.Interoperability" CheckId="CA1405" Status="Active" Created="2018-10-28 14:46:12Z" FixCategory="DependsOnFix">
+           <Issue Certainty="90" Level="Error">'EntityBase' is marked ComVisible(true) but has the following ComVisible(false) types in its object hierarchy: 'Entity', 'ScreenObject'</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="Player" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ComVisibleTypeBaseTypesShouldBeComVisible" Category="Microsoft.Interoperability" CheckId="CA1405" Status="Active" Created="2018-10-28 14:46:12Z" FixCategory="DependsOnFix">
+           <Issue Certainty="90" Level="Error">'Player' is marked ComVisible(true) but has the following ComVisible(false) types in its object hierarchy: 'Entity', 'ScreenObject'</Issue>
+          </Message>
+         </Messages>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
     </Module>
    </Modules>
   </Target>
  </Targets>
  <Rules>
+  <Rule TypeName="ComVisibleTypeBaseTypesShouldBeComVisible" Category="Microsoft.Interoperability" CheckId="CA1405">
+   <Name>COM visible type base types should be COM visible</Name>
+   <Description>COM visible types should have an object hierarchy that is uniformly COM visible.</Description>
+   <Resolution Name="Default">{0} is marked ComVisible(true) but has the following ComVisible(false) types in its object hierarchy: {1}</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182202.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="90">Error</MessageLevel>
+   <File Name="interoperabilityrules.dll" Version="15.0.0.0" />
+  </Rule>
   <Rule TypeName="MarkAssembliesWithAssemblyVersion" Category="Microsoft.Design" CheckId="CA1016">
    <Name>Mark assemblies with AssemblyVersionAttribute</Name>
    <Description>Assemblies should use version numbers. The version number is considered part of an assembly's identity. Versioning is applied by means of the AssemblyVersion attribute.</Description>
