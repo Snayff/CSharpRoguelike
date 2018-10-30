@@ -1,11 +1,12 @@
-﻿using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using Rectangle = Microsoft.Xna.Framework.Rectangle;
 using SadConsole;
-using Console = SadConsole.Console;
 using SadConsole.Entities;
 using SadConsole.Surfaces;
-using GoRogue.MapViews;
+using Console = SadConsole.Console;
+using CSharpRoguelike.Map.Tile;
+
 
 namespace CSharpRoguelike.CustomConsole
 {
@@ -16,13 +17,12 @@ namespace CSharpRoguelike.CustomConsole
         public static EntityType.Player player;
         private Basic borderSurface;
 
-        public EntityConsole(int width, int height, int viewWidth, int viewHeight) : base(width, height)
+        public EntityConsole(int width, int height, int viewWidth, int viewHeight, TileBase[] tileArray) : base(width, height, SadConsole.Global.FontDefault, new Rectangle(0,0, width, height), tileArray)
         {
-            Width = width;
-            Height = height;
+            
             UseKeyboard = true;
             IsVisible = true;
-            Fill(Color.White, Color.Black, 0);
+            //Fill(Color.White, Color.MediumPurple, 0);
             ViewPort = new Rectangle(Position.X, Position.Y, viewWidth, viewHeight);
 
             //draw border
@@ -81,8 +81,7 @@ namespace CSharpRoguelike.CustomConsole
                 // Check if the new position is valid
                 if (ViewPort.Contains(player.Position))
                 {
-                    // Entity moved. Let's draw a trail of where they moved from.
-                    SetGlyph(player.PreviousPosition.X, player.PreviousPosition.Y, 250);
+                    //GameLoop.mapConsole.Surface.CenterViewPortOnPoint(player.Position);
                     player.PreviousPosition = player.Position;
 
                     return true;
@@ -97,8 +96,7 @@ namespace CSharpRoguelike.CustomConsole
         private static void CreatePlayer()
         {
             player = new EntityType.Player();
-            player.Position = new Point(1,1);
-            //new Point(0, 0); //should this be in player class params?
+            player.Position = new Point(1,1); //should this be in player class params?
             player.PreviousPosition = player.Position;
         }
     }

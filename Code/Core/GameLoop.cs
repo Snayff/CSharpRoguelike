@@ -33,13 +33,13 @@ namespace CSharpRoguelike
         //map console info
         private static readonly int viewportWidth = screenWidth - infoWidth - (borderSize * 2);
         private static readonly int viewportHeight = screenHeight -  messageHeight - (borderSize * 2 );
-        private static readonly int mapWidth = viewportWidth; //200;
-        private static readonly int mapHeight = viewportHeight; //200;
+        private static readonly int mapWidth = viewportWidth + 20; 
+        private static readonly int mapHeight = viewportHeight  + 20; 
         private static Point mapPosition = new Point(0 + borderSize, 0 + borderSize);
         public static Console mapConsole;
 
         //RNG seed
-        private static int seed = 123456789; //set the game seed
+        private static readonly int seed = 123456789; //set the game seed
 
         static void Main(string[] args)
         {
@@ -78,7 +78,7 @@ namespace CSharpRoguelike
             Global.CurrentScreen = new ScreenObject();
 
             //Map Console
-            mapConsole = new EntityConsole(mapWidth, mapHeight, viewportWidth, viewportHeight);
+            mapConsole = new EntityConsole(mapWidth, mapHeight, viewportWidth, viewportHeight, CSharpRoguelike.Map.Generation.MapGeneration.tileArray);
             mapConsole.Position = mapPosition;
             Global.CurrentScreen.Children.Add(mapConsole);
             Global.FocusedConsoles.Set(mapConsole);

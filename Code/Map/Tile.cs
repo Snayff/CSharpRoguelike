@@ -9,8 +9,9 @@ namespace CSharpRoguelike.Map.Tile
     {
         public bool IsBlockingMove;
         public bool IsBlockingSight;
+        public string Name;
 
-        public TileBase(Color foreground, Color background, int glyph) : base(foreground, background, glyph)
+        public TileBase() : base()
         {
 
         }
@@ -18,20 +19,31 @@ namespace CSharpRoguelike.Map.Tile
 
     class Wall : TileBase
     {
-        public Wall() : base(Color.White, Color.Gray, '#' )
+        public Wall() : base()
         {
+            
+            Name = "Wall";
+            Foreground = Color.White; 
+            Background = Color.DeepPink;
+            Glyph = '#';
+
             IsBlockingMove = true;
-            IsBlockingSight = true; 
+            IsBlockingSight = true;
         }
     }
 
     class Floor : TileBase
     {
-        public Floor() : base(new Color(25, 25, 25), Color.Black, ' ')
+        public Floor() : base()
         {
+
+            Name = "Wall";
+            Foreground = Color.HotPink;
+            Background = Color.LightPink;
+            Glyph = ' ';
+
             IsBlockingMove = false;
             IsBlockingSight = false;
-            
         }
     }
 } 
