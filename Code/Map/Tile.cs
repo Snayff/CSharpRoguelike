@@ -24,7 +24,7 @@ namespace CSharpRoguelike.Map.Tile
             
             Name = "Wall";
             Foreground = Color.White; 
-            Background = Color.DeepPink;
+            Background = Color.Transparent;
             Glyph = '#';
 
             IsBlockingMove = true;
@@ -38,8 +38,8 @@ namespace CSharpRoguelike.Map.Tile
         {
 
             Name = "Wall";
-            Foreground = Color.HotPink;
-            Background = Color.LightPink;
+            Foreground = Color.Transparent;
+            Background = Color.Transparent;
             Glyph = ' ';
 
             IsBlockingMove = false;

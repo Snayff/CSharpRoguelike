@@ -67,6 +67,7 @@ namespace CSharpRoguelike
         private static void Update(GameTime time)
         {
             // Called each logic update.
+           
         }
 
         private static void Init()
@@ -74,11 +75,15 @@ namespace CSharpRoguelike
             //set seed for RNG
             GoRogue.Random.SingletonRandom.DefaultRNG = new Troschuetz.Random.Generators.XorShift128Generator(seed);
 
+
+            //create the map
+            Map.Generation.MapGeneration.CreateMap(mapWidth, mapHeight, 20, 7, 22, 10);
+
             // Set our new console as the thing to render and process
             Global.CurrentScreen = new ScreenObject();
 
             //Map Console
-            mapConsole = new EntityConsole(mapWidth, mapHeight, viewportWidth, viewportHeight, CSharpRoguelike.Map.Generation.MapGeneration.tileArray);
+            mapConsole = new EntityConsole(mapWidth, mapHeight, viewportWidth, viewportHeight, EntityConsole.tileArray);
             mapConsole.Position = mapPosition;
             Global.CurrentScreen.Children.Add(mapConsole);
             Global.FocusedConsoles.Set(mapConsole);
@@ -98,18 +103,16 @@ namespace CSharpRoguelike
             Global.CurrentScreen.Children.Add(messageConsole);
             messageConsole.Show(); //as its a window need to declare its visible
 
-            //create the map
-            Map.Generation.MapGeneration.CreateMap(mapWidth, mapHeight, 20, 7, 22, 10);
+            
             //move the player to a valid position
             var validPosition = Map.Generation.MapGeneration.mapData.RandomPosition(true);
             EntityConsole.player.Position = new Point(validPosition.X, validPosition.Y);
-            bool tileValue = Map.Generation.MapGeneration.mapData[EntityConsole.player.Position.X, EntityConsole.player.Position.Y];
+
+            //centre view on player
+            mapConsole.CenterViewPortOnPoint(EntityConsole.player.Position);
 
 
 
         }
-
-
-
     }
 }

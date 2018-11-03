@@ -10,19 +10,24 @@ using CSharpRoguelike.Map.Tile;
 
 namespace CSharpRoguelike.CustomConsole
 {
+    
+
     class EntityConsole : Console
     {
         // The console here acts like a playing field for our entities. You could draw some sort of area for the
         // entity to walk around on. The console also gets focused with the keyboard and accepts keyboard events.
         public static EntityType.Player player;
+        public static TileBase[] tileArray;
         private Basic borderSurface;
+        
 
         public EntityConsole(int width, int height, int viewWidth, int viewHeight, TileBase[] tileArray) : base(width, height, SadConsole.Global.FontDefault, new Rectangle(0,0, width, height), tileArray)
         {
+
             
+
             UseKeyboard = true;
             IsVisible = true;
-            //Fill(Color.White, Color.MediumPurple, 0);
             ViewPort = new Rectangle(Position.X, Position.Y, viewWidth, viewHeight);
 
             //draw border
@@ -42,55 +47,24 @@ namespace CSharpRoguelike.CustomConsole
 
         }
 
-        public override bool ProcessKeyboard(SadConsole.Input.Keyboard info)
+        
+
+        public bool IsTileWalkable(Point newPoint)
         {
-            // Forward the keyboard data to the entity to handle the movement code.
-            // By not setting the entity as the active object, we let this
-            // "game level" (the console we're hosting the entity on) determine if
-            // the keyboard data should be sent to the entity.
+            int x = newPoint.X;
+            int y = newPoint.Y;
 
-            // Process logic for moving the entity.
-            bool keyHit = false;
-            var oldPosition = player.Position;
-
-            if (info.IsKeyPressed(Keys.Up))
+            //check if target point is within map bounds
+            if (x < 0 || y < 0 || x > Width || y > Height )
             {
-                player.MoveBy(new Point(0,-1));
-                keyHit = true;
+                return false;
             }
-            else if (info.IsKeyPressed(Keys.Down))
+            else
             {
-                player.MoveBy(new Point(0, 1));
-                keyHit = true;
+                //check if target tile blocks movement
+                return !tileArray[GoRogue.Coord.ToIndex(x, y, Width)].IsBlockingMove;
             }
 
-            if (info.IsKeyPressed(Keys.Left))
-            {
-                player.MoveBy(new Point(-1,0));
-                keyHit = true;
-            }
-            else if (info.IsKeyPressed(Keys.Right))
-            {
-                player.MoveBy(new Point(1, 0));
-                keyHit = true;
-            }
-
-
-            if (keyHit)
-            {
-                // Check if the new position is valid
-                if (ViewPort.Contains(player.Position))
-                {
-                    //GameLoop.mapConsole.Surface.CenterViewPortOnPoint(player.Position);
-                    player.PreviousPosition = player.Position;
-
-                    return true;
-                }
-                else  // New position was not in the area of the console, move back
-                    player.Position = oldPosition;
-            }
-
-            return false;
         }
 
         private static void CreatePlayer()
@@ -98,6 +72,12 @@ namespace CSharpRoguelike.CustomConsole
             player = new EntityType.Player();
             player.Position = new Point(1,1); //should this be in player class params?
             player.PreviousPosition = player.Position;
+        }
+
+        private static void CreateTileArray(int width, int height)
+        {
+            //create tile array
+            tileArray = new TileBase[width * height];
         }
     }
 }

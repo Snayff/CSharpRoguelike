@@ -15,6 +15,7 @@ namespace CSharpRoguelike.EntityType
 
     public class Actor : EntityBase
     {
+        public Point PreviousPosition;
 
         public Actor(Color foreground, Color background, int glyph) : base(foreground, background, glyph)
         {
@@ -23,28 +24,33 @@ namespace CSharpRoguelike.EntityType
             Animation.CurrentFrame[0].Glyph = glyph;
         }
 
-        public bool MoveBy(Point newPosition)
+        public void Move(Point newPosition)
         {
+            Position += newPosition;
+        }
 
+        public bool AttemptMove(Point newPosition)
+        {
             // Check the map if we can move to this new position
-            if (true) //(map.IsTileWalkable(newPosition.X, newPosition.Y))
+            if (CustomConsole.EntityConsole.IsTileWalkable(newPosition))
             {
-                Position += newPosition;
                 return true;
             }
             else
+            {
                 return false;
+            }
+                
+
         }
     }
 
     public class Player : Actor
     {
 
-        public Point PreviousPosition;
-
         public Player() : base(Color.WhiteSmoke, Color.Transparent, '@')
         {
-            
+
         }
     }
 
