@@ -15,7 +15,7 @@ namespace CSharpRoguelike.CustomConsole
     {
         // The console here acts like a playing field for our entities. You could draw some sort of area for the
         // entity to walk around on. The console also gets focused with the keyboard and accepts keyboard events.
-        public static EntityType.Player player;
+        public  EntityType.Player player;
         public  TileBase[] tileArray;
         private Basic borderSurface;
         
@@ -70,7 +70,7 @@ namespace CSharpRoguelike.CustomConsole
 
         }
 
-        private static void CreatePlayer()
+        private void CreatePlayer()
         {
             player = new EntityType.Player();
             player.Position = new Point(1, 1);

@@ -66,15 +66,17 @@ namespace CSharpRoguelike
         
         private static void Update(GameTime time)
         {
-            // Called each logic update.
-           
+            //check for input
+            if (Input.InputController.CheckKeyboard())
+            {
+                Input.InputController.ProcessInput();
+            }
         }
 
         private static void Init()
         {
             //set seed for RNG
             GoRogue.Random.SingletonRandom.DefaultRNG = new Troschuetz.Random.Generators.XorShift128Generator(seed);
-
 
             // Set our new console as the thing to render and process
             Global.CurrentScreen = new ScreenObject();
@@ -87,11 +89,11 @@ namespace CSharpRoguelike
 
             //create the map and update the tileArray with Tile values
             Map.Generation.MapGeneration.CreateMap(mapWidth, mapHeight, 20, 7, 22, 10);
-            //mapConsole.SetCellsToTileArray();
+            mapConsole.SetCellsToTileArray();
 
             //move the player to a valid position
             var validPosition = Map.Generation.MapGeneration.mapData.RandomPosition(true);
-            EntityConsole.player.Position = new Point(validPosition.X, validPosition.Y);
+            mapConsole.player.Position = new Point(validPosition.X, validPosition.Y);
 
             //Info Console
             infoConsole = new Console(infoWidth, infoHeight);
@@ -109,7 +111,7 @@ namespace CSharpRoguelike
             messageConsole.Show(); //as its a window need to declare its visible
 
             //centre view on player
-            mapConsole.CenterViewPortOnPoint(EntityConsole.player.Position);
+            mapConsole.CenterViewPortOnPoint(mapConsole.player.Position);
         }
     }
 }

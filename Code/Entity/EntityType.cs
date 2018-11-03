@@ -26,13 +26,14 @@ namespace CSharpRoguelike.EntityType
 
         public void Move(Point newPosition)
         {
+            PreviousPosition = Position;
             Position += newPosition;
         }
 
-        public bool AttemptMove(Point newPosition)
+        public bool CheckTargetLocationIsValid(Point relativePosition)
         {
             // Check the map if we can move to this new position
-            if (GameLoop.mapConsole.IsTileWalkable(newPosition))
+            if (GameLoop.mapConsole.IsTileWalkable(Position + relativePosition))
             {
                 return true;
             }
