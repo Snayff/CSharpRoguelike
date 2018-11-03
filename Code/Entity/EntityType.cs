@@ -32,7 +32,7 @@ namespace CSharpRoguelike.EntityType
         public bool AttemptMove(Point newPosition)
         {
             // Check the map if we can move to this new position
-            if (CustomConsole.EntityConsole.IsTileWalkable(newPosition))
+            if (GameLoop.mapConsole.IsTileWalkable(newPosition))
             {
                 return true;
             }

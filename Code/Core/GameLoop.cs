@@ -36,7 +36,7 @@ namespace CSharpRoguelike
         private static readonly int mapWidth = viewportWidth + 20; 
         private static readonly int mapHeight = viewportHeight  + 20; 
         private static Point mapPosition = new Point(0 + borderSize, 0 + borderSize);
-        public static Console mapConsole;
+        public static EntityConsole mapConsole;
 
         //RNG seed
         private static readonly int seed = 123456789; //set the game seed
@@ -76,17 +76,22 @@ namespace CSharpRoguelike
             GoRogue.Random.SingletonRandom.DefaultRNG = new Troschuetz.Random.Generators.XorShift128Generator(seed);
 
 
-            //create the map
-            Map.Generation.MapGeneration.CreateMap(mapWidth, mapHeight, 20, 7, 22, 10);
-
             // Set our new console as the thing to render and process
             Global.CurrentScreen = new ScreenObject();
 
-            //Map Console
-            mapConsole = new EntityConsole(mapWidth, mapHeight, viewportWidth, viewportHeight, EntityConsole.tileArray);
+            //map Console
+            mapConsole = new EntityConsole(mapWidth, mapHeight, viewportWidth, viewportHeight);
             mapConsole.Position = mapPosition;
             Global.CurrentScreen.Children.Add(mapConsole);
             Global.FocusedConsoles.Set(mapConsole);
+
+            //create the map and update the tileArray with Tile values
+            Map.Generation.MapGeneration.CreateMap(mapWidth, mapHeight, 20, 7, 22, 10);
+            //mapConsole.SetCellsToTileArray();
+
+            //move the player to a valid position
+            var validPosition = Map.Generation.MapGeneration.mapData.RandomPosition(true);
+            EntityConsole.player.Position = new Point(validPosition.X, validPosition.Y);
 
             //Info Console
             infoConsole = new Console(infoWidth, infoHeight);
@@ -103,16 +108,8 @@ namespace CSharpRoguelike
             Global.CurrentScreen.Children.Add(messageConsole);
             messageConsole.Show(); //as its a window need to declare its visible
 
-            
-            //move the player to a valid position
-            var validPosition = Map.Generation.MapGeneration.mapData.RandomPosition(true);
-            EntityConsole.player.Position = new Point(validPosition.X, validPosition.Y);
-
             //centre view on player
             mapConsole.CenterViewPortOnPoint(EntityConsole.player.Position);
-
-
-
         }
     }
 }

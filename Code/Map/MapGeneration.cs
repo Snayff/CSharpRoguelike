@@ -24,11 +24,11 @@ namespace CSharpRoguelike.Map.Generation
                     //mapData contains true for a passable tile (floor) and false for a non passable tile (wall)
                     if (mapData[x, y])
                     {
-                        CustomConsole.EntityConsole.tileArray[GoRogue.Coord.ToIndex(x, y, mapWidth)] = new Floor();
+                        GameLoop.mapConsole.tileArray[GoRogue.Coord.ToIndex(x, y, mapWidth)] = new Floor();
                     }
                     else
                     {
-                        CustomConsole.EntityConsole.tileArray[GoRogue.Coord.ToIndex(x, y, mapWidth)] = new Wall();
+                        GameLoop.mapConsole.tileArray[GoRogue.Coord.ToIndex(x, y, mapWidth)] = new Wall();
                     }
                 }
             }
