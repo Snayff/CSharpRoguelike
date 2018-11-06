@@ -55,16 +55,30 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Graphics\Fonts\C64.font">
+    <None Include="Graphics\Entities\Player\roguelikeChar.font">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Graphics\Fonts\Cheepicus12.font">
+    <None Include="Graphics\Fonts\C64.font">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Graphics\Fonts\IBM.font">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Graphics\Fonts\IBM_ext.font" />
+    <None Include="Graphics\Fonts\IBM_ext.font">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Graphics\Fonts\SuperBlack.font">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Graphics\Fonts\SuperWhite.font">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Graphics\Fonts\Venice.font">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Graphics\Tiles\DungeonTiles.font">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -89,24 +103,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Graphics\Fonts\Cheepicus_12x12.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Graphics\Fonts\IBM8x16.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Graphics\Fonts\IBM8x16_NoPadding_extended.png" />
-    <Content Include="Graphics\Fonts\Yayo_c64.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Code\Core\CustomConsole.cs" />
+    <Compile Include="Code\Core\Colour.cs" />
+    <Compile Include="Code\Core\Palette.cs" />
+    <Compile Include="Code\CustomConsole\MapConsole.cs" />
     <Compile Include="Code\Core\GameLoop.cs" />
     <Compile Include="Code\Core\InputController.cs" />
-    <Compile Include="Code\Entity\EntityType.cs" />
+    <Compile Include="Code\Core\FontManager.cs" />
+    <Compile Include="Code\EntityType\Actor.cs" />
+    <Compile Include="Code\EntityType\EntityType.cs" />
+    <Compile Include="Code\EntityType\Player.cs" />
     <Compile Include="Code\Map\MapGeneration.cs" />
-    <Compile Include="Code\Map\Tile.cs" />
+    <Compile Include="Code\Map\Tile\Floor.cs" />
+    <Compile Include="Code\Map\Tile\TileBase.cs" />
+    <Compile Include="Code\Map\Tile\Wall.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -120,6 +129,482 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Graphics\Entities\Actors\AirA.png" />
+    <Content Include="Graphics\Entities\Actors\BallA.png" />
+    <Content Include="Graphics\Entities\Actors\BallB.png" />
+    <Content Include="Graphics\Entities\Actors\BallC.png" />
+    <Content Include="Graphics\Entities\Actors\BallD.png" />
+    <Content Include="Graphics\Entities\Actors\BatA.png" />
+    <Content Include="Graphics\Entities\Actors\BatB.png" />
+    <Content Include="Graphics\Entities\Actors\BatC.png" />
+    <Content Include="Graphics\Entities\Actors\BatD.png" />
+    <Content Include="Graphics\Entities\Actors\BatE.png" />
+    <Content Include="Graphics\Entities\Actors\BatF.png" />
+    <Content Include="Graphics\Entities\Actors\BatG.png" />
+    <Content Include="Graphics\Entities\Actors\BatH.png" />
+    <Content Include="Graphics\Entities\Actors\BatI.png" />
+    <Content Include="Graphics\Entities\Actors\BatJ.png" />
+    <Content Include="Graphics\Entities\Actors\BatK.png" />
+    <Content Include="Graphics\Entities\Actors\BatL.png" />
+    <Content Include="Graphics\Entities\Actors\BatM.png" />
+    <Content Include="Graphics\Entities\Actors\BatN.png" />
+    <Content Include="Graphics\Entities\Actors\BatO.png" />
+    <Content Include="Graphics\Entities\Actors\BatP.png" />
+    <Content Include="Graphics\Entities\Actors\BatQ.png" />
+    <Content Include="Graphics\Entities\Actors\BatR.png" />
+    <Content Include="Graphics\Entities\Actors\BatS.png" />
+    <Content Include="Graphics\Entities\Actors\BatSmallA.png" />
+    <Content Include="Graphics\Entities\Actors\BatSmallB.png" />
+    <Content Include="Graphics\Entities\Actors\BatSmallC.png" />
+    <Content Include="Graphics\Entities\Actors\BatSmallD.png" />
+    <Content Include="Graphics\Entities\Actors\BatSmallE.png" />
+    <Content Include="Graphics\Entities\Actors\BatT.png" />
+    <Content Include="Graphics\Entities\Actors\BeardA.png" />
+    <Content Include="Graphics\Entities\Actors\BeardB.png" />
+    <Content Include="Graphics\Entities\Actors\BrainA.png" />
+    <Content Include="Graphics\Entities\Actors\BrainB.png" />
+    <Content Include="Graphics\Entities\Actors\BrainC.png" />
+    <Content Include="Graphics\Entities\Actors\BrainD.png" />
+    <Content Include="Graphics\Entities\Actors\BrainE.png" />
+    <Content Include="Graphics\Entities\Actors\BugA.png" />
+    <Content Include="Graphics\Entities\Actors\BugB.png" />
+    <Content Include="Graphics\Entities\Actors\BugC.png" />
+    <Content Include="Graphics\Entities\Actors\BugD.png" />
+    <Content Include="Graphics\Entities\Actors\BugE.png" />
+    <Content Include="Graphics\Entities\Actors\ButterflyA.png" />
+    <Content Include="Graphics\Entities\Actors\ButterflyB.png" />
+    <Content Include="Graphics\Entities\Actors\CatA.png" />
+    <Content Include="Graphics\Entities\Actors\CatB.png" />
+    <Content Include="Graphics\Entities\Actors\CatC.png" />
+    <Content Include="Graphics\Entities\Actors\CatD.png" />
+    <Content Include="Graphics\Entities\Actors\CatE.png" />
+    <Content Include="Graphics\Entities\Actors\CatF.png" />
+    <Content Include="Graphics\Entities\Actors\ChestA.png" />
+    <Content Include="Graphics\Entities\Actors\ChickenA.png" />
+    <Content Include="Graphics\Entities\Actors\ChickenB.png" />
+    <Content Include="Graphics\Entities\Actors\ChickenC.png" />
+    <Content Include="Graphics\Entities\Actors\CloudA.png" />
+    <Content Include="Graphics\Entities\Actors\CloudB.png" />
+    <Content Include="Graphics\Entities\Actors\CloudC.png" />
+    <Content Include="Graphics\Entities\Actors\CloudD.png" />
+    <Content Include="Graphics\Entities\Actors\CoffinA.png" />
+    <Content Include="Graphics\Entities\Actors\CoffinB.png" />
+    <Content Include="Graphics\Entities\Actors\CoffinC.png" />
+    <Content Include="Graphics\Entities\Actors\CoffinD.png" />
+    <Content Include="Graphics\Entities\Actors\CountA.png" />
+    <Content Include="Graphics\Entities\Actors\CrabA.png" />
+    <Content Include="Graphics\Entities\Actors\CrabB.png" />
+    <Content Include="Graphics\Entities\Actors\CrabC.png" />
+    <Content Include="Graphics\Entities\Actors\CrabD.png" />
+    <Content Include="Graphics\Entities\Actors\CrabE.png" />
+    <Content Include="Graphics\Entities\Actors\CrabF.png" />
+    <Content Include="Graphics\Entities\Actors\DiscA.png" />
+    <Content Include="Graphics\Entities\Actors\DogA.png" />
+    <Content Include="Graphics\Entities\Actors\DogB.png" />
+    <Content Include="Graphics\Entities\Actors\DogC.png" />
+    <Content Include="Graphics\Entities\Actors\DogD.png" />
+    <Content Include="Graphics\Entities\Actors\DogE.png" />
+    <Content Include="Graphics\Entities\Actors\DogF.png" />
+    <Content Include="Graphics\Entities\Actors\DogG.png" />
+    <Content Include="Graphics\Entities\Actors\DuckA.png" />
+    <Content Include="Graphics\Entities\Actors\DuckB.png" />
+    <Content Include="Graphics\Entities\Actors\DuckC.png" />
+    <Content Include="Graphics\Entities\Actors\DwarfA.png" />
+    <Content Include="Graphics\Entities\Actors\DwarfB.png" />
+    <Content Include="Graphics\Entities\Actors\DwarfC.png" />
+    <Content Include="Graphics\Entities\Actors\DwarfD.png" />
+    <Content Include="Graphics\Entities\Actors\DwarfE.png" />
+    <Content Include="Graphics\Entities\Actors\DwarfF.png" />
+    <Content Include="Graphics\Entities\Actors\DyeA.png" />
+    <Content Include="Graphics\Entities\Actors\DyeB.png" />
+    <Content Include="Graphics\Entities\Actors\DyeC.png" />
+    <Content Include="Graphics\Entities\Actors\DyeD.png" />
+    <Content Include="Graphics\Entities\Actors\EarthA.png" />
+    <Content Include="Graphics\Entities\Actors\EarthB.png" />
+    <Content Include="Graphics\Entities\Actors\EarthC.png" />
+    <Content Include="Graphics\Entities\Actors\EarthSmallA.png" />
+    <Content Include="Graphics\Entities\Actors\EarthSmallB.png" />
+    <Content Include="Graphics\Entities\Actors\EarthSmallC.png" />
+    <Content Include="Graphics\Entities\Actors\EarthSmallerA.png" />
+    <Content Include="Graphics\Entities\Actors\EarthSmallerB.png" />
+    <Content Include="Graphics\Entities\Actors\EarthSmallerC.png" />
+    <Content Include="Graphics\Entities\Actors\EelA.png" />
+    <Content Include="Graphics\Entities\Actors\EelB.png" />
+    <Content Include="Graphics\Entities\Actors\EelC.png" />
+    <Content Include="Graphics\Entities\Actors\EelD.png" />
+    <Content Include="Graphics\Entities\Actors\ElementalOrbA.png" />
+    <Content Include="Graphics\Entities\Actors\ElementalOrbB.png" />
+    <Content Include="Graphics\Entities\Actors\EyeA.png" />
+    <Content Include="Graphics\Entities\Actors\EyeB.png" />
+    <Content Include="Graphics\Entities\Actors\EyeBallA.png" />
+    <Content Include="Graphics\Entities\Actors\EyeBallB.png" />
+    <Content Include="Graphics\Entities\Actors\EyeBallC.png" />
+    <Content Include="Graphics\Entities\Actors\EyeC.png" />
+    <Content Include="Graphics\Entities\Actors\EyeD.png" />
+    <Content Include="Graphics\Entities\Actors\FactoryA.png" />
+    <Content Include="Graphics\Entities\Actors\FactoryB.png" />
+    <Content Include="Graphics\Entities\Actors\FireSmallA.png" />
+    <Content Include="Graphics\Entities\Actors\FishA.png" />
+    <Content Include="Graphics\Entities\Actors\FishB.png" />
+    <Content Include="Graphics\Entities\Actors\FishC.png" />
+    <Content Include="Graphics\Entities\Actors\FrogA.png" />
+    <Content Include="Graphics\Entities\Actors\FrogB.png" />
+    <Content Include="Graphics\Entities\Actors\FrogC.png" />
+    <Content Include="Graphics\Entities\Actors\FrogD.png" />
+    <Content Include="Graphics\Entities\Actors\FrogE.png" />
+    <Content Include="Graphics\Entities\Actors\GhastA.png" />
+    <Content Include="Graphics\Entities\Actors\GhastB.png" />
+    <Content Include="Graphics\Entities\Actors\GhastC.png" />
+    <Content Include="Graphics\Entities\Actors\GnomeA.png" />
+    <Content Include="Graphics\Entities\Actors\GnomeB.png" />
+    <Content Include="Graphics\Entities\Actors\GnomeC.png" />
+    <Content Include="Graphics\Entities\Actors\GoatA.png" />
+    <Content Include="Graphics\Entities\Actors\GoatB.png" />
+    <Content Include="Graphics\Entities\Actors\GolemA.png" />
+    <Content Include="Graphics\Entities\Actors\HareA.png" />
+    <Content Include="Graphics\Entities\Actors\HareB.png" />
+    <Content Include="Graphics\Entities\Actors\HareC.png" />
+    <Content Include="Graphics\Entities\Actors\HareD.png" />
+    <Content Include="Graphics\Entities\Actors\HeadA.png" />
+    <Content Include="Graphics\Entities\Actors\HeadB.png" />
+    <Content Include="Graphics\Entities\Actors\HeadC.png" />
+    <Content Include="Graphics\Entities\Actors\HeadD.png" />
+    <Content Include="Graphics\Entities\Actors\HulkA.png" />
+    <Content Include="Graphics\Entities\Actors\HulkB.png" />
+    <Content Include="Graphics\Entities\Actors\KlackonA.png" />
+    <Content Include="Graphics\Entities\Actors\KlackonB.png" />
+    <Content Include="Graphics\Entities\Actors\KlackonC.png" />
+    <Content Include="Graphics\Entities\Actors\KlackonD.png" />
+    <Content Include="Graphics\Entities\Actors\KlackonE.png" />
+    <Content Include="Graphics\Entities\Actors\KlackonF.png" />
+    <Content Include="Graphics\Entities\Actors\LurkerA.png" />
+    <Content Include="Graphics\Entities\Actors\LurkerB.png" />
+    <Content Include="Graphics\Entities\Actors\LurkerC.png" />
+    <Content Include="Graphics\Entities\Actors\MachineA.png" />
+    <Content Include="Graphics\Entities\Actors\MaskA.png" />
+    <Content Include="Graphics\Entities\Actors\MaskB.png" />
+    <Content Include="Graphics\Entities\Actors\MaskC.png" />
+    <Content Include="Graphics\Entities\Actors\MaskD.png" />
+    <Content Include="Graphics\Entities\Actors\MonolithA.png" />
+    <Content Include="Graphics\Entities\Actors\MonolithB.png" />
+    <Content Include="Graphics\Entities\Actors\MonolithC.png" />
+    <Content Include="Graphics\Entities\Actors\MonolithD.png" />
+    <Content Include="Graphics\Entities\Actors\MonolithE.png" />
+    <Content Include="Graphics\Entities\Actors\MonolithF.png" />
+    <Content Include="Graphics\Entities\Actors\MonolithG.png" />
+    <Content Include="Graphics\Entities\Actors\MonolithH.png" />
+    <Content Include="Graphics\Entities\Actors\MonolithI.png" />
+    <Content Include="Graphics\Entities\Actors\MonolithJ.png" />
+    <Content Include="Graphics\Entities\Actors\MonolithK.png" />
+    <Content Include="Graphics\Entities\Actors\MonolithL.png" />
+    <Content Include="Graphics\Entities\Actors\MothA.png" />
+    <Content Include="Graphics\Entities\Actors\MothB.png" />
+    <Content Include="Graphics\Entities\Actors\MothC.png" />
+    <Content Include="Graphics\Entities\Actors\MothD.png" />
+    <Content Include="Graphics\Entities\Actors\MothE.png" />
+    <Content Include="Graphics\Entities\Actors\MouthA.png" />
+    <Content Include="Graphics\Entities\Actors\MouthB.png" />
+    <Content Include="Graphics\Entities\Actors\MouthC.png" />
+    <Content Include="Graphics\Entities\Actors\MummyA.png" />
+    <Content Include="Graphics\Entities\Actors\MummyB.png" />
+    <Content Include="Graphics\Entities\Actors\MummyC.png" />
+    <Content Include="Graphics\Entities\Actors\MushroomA.png" />
+    <Content Include="Graphics\Entities\Actors\MushroomB.png" />
+    <Content Include="Graphics\Entities\Actors\OrbA.png" />
+    <Content Include="Graphics\Entities\Actors\OrbB.png" />
+    <Content Include="Graphics\Entities\Actors\OrbC.png" />
+    <Content Include="Graphics\Entities\Actors\OrbD.png" />
+    <Content Include="Graphics\Entities\Actors\PotionA.png" />
+    <Content Include="Graphics\Entities\Actors\PotionB.png" />
+    <Content Include="Graphics\Entities\Actors\PotionC.png" />
+    <Content Include="Graphics\Entities\Actors\PotionD.png" />
+    <Content Include="Graphics\Entities\Actors\PotionE.png" />
+    <Content Include="Graphics\Entities\Actors\PotionF.png" />
+    <Content Include="Graphics\Entities\Actors\PotionG.png" />
+    <Content Include="Graphics\Entities\Actors\PotionH.png" />
+    <Content Include="Graphics\Entities\Actors\PotionI.png" />
+    <Content Include="Graphics\Entities\Actors\PotionJ.png" />
+    <Content Include="Graphics\Entities\Actors\PotionK.png" />
+    <Content Include="Graphics\Entities\Actors\PotionL.png" />
+    <Content Include="Graphics\Entities\Actors\PterodactylA.png" />
+    <Content Include="Graphics\Entities\Actors\PterodactylB.png" />
+    <Content Include="Graphics\Entities\Actors\PterodactylC.png" />
+    <Content Include="Graphics\Entities\Actors\PterodactylD.png" />
+    <Content Include="Graphics\Entities\Actors\PterodactylE.png" />
+    <Content Include="Graphics\Entities\Actors\PterodactylF.png" />
+    <Content Include="Graphics\Entities\Actors\PterodactylG.png" />
+    <Content Include="Graphics\Entities\Actors\PterodactylH.png" />
+    <Content Include="Graphics\Entities\Actors\PuddleA.png" />
+    <Content Include="Graphics\Entities\Actors\PuddleB.png" />
+    <Content Include="Graphics\Entities\Actors\PuddleC.png" />
+    <Content Include="Graphics\Entities\Actors\PyramidA.png" />
+    <Content Include="Graphics\Entities\Actors\PyramidB.png" />
+    <Content Include="Graphics\Entities\Actors\ReaperA.png" />
+    <Content Include="Graphics\Entities\Actors\RobotA.png" />
+    <Content Include="Graphics\Entities\Actors\RobotB.png" />
+    <Content Include="Graphics\Entities\Actors\RobotC.png" />
+    <Content Include="Graphics\Entities\Actors\RobotD.png" />
+    <Content Include="Graphics\Entities\Actors\ScorpionA.png" />
+    <Content Include="Graphics\Entities\Actors\ScorpionB.png" />
+    <Content Include="Graphics\Entities\Actors\ScorpionC.png" />
+    <Content Include="Graphics\Entities\Actors\SentryA.png" />
+    <Content Include="Graphics\Entities\Actors\SentryB.png" />
+    <Content Include="Graphics\Entities\Actors\SentryC.png" />
+    <Content Include="Graphics\Entities\Actors\SentryCopterA.png" />
+    <Content Include="Graphics\Entities\Actors\SentryCopterB.png" />
+    <Content Include="Graphics\Entities\Actors\SentryCopterC.png" />
+    <Content Include="Graphics\Entities\Actors\ShieldA.png" />
+    <Content Include="Graphics\Entities\Actors\ShieldB.png" />
+    <Content Include="Graphics\Entities\Actors\ShieldC.png" />
+    <Content Include="Graphics\Entities\Actors\ShieldD.png" />
+    <Content Include="Graphics\Entities\Actors\ShieldE.png" />
+    <Content Include="Graphics\Entities\Actors\ShieldF.png" />
+    <Content Include="Graphics\Entities\Actors\SkeletonA.png" />
+    <Content Include="Graphics\Entities\Actors\SkeletonB.png" />
+    <Content Include="Graphics\Entities\Actors\SkeletonC.png" />
+    <Content Include="Graphics\Entities\Actors\SkeletonD.png" />
+    <Content Include="Graphics\Entities\Actors\SkullA.png" />
+    <Content Include="Graphics\Entities\Actors\SkullB.png" />
+    <Content Include="Graphics\Entities\Actors\SkullC.png" />
+    <Content Include="Graphics\Entities\Actors\SkullD.png" />
+    <Content Include="Graphics\Entities\Actors\SkullFlamingA.png" />
+    <Content Include="Graphics\Entities\Actors\SkullFlamingB.png" />
+    <Content Include="Graphics\Entities\Actors\SkullSmallA.png" />
+    <Content Include="Graphics\Entities\Actors\SkullSmallB.png" />
+    <Content Include="Graphics\Entities\Actors\SkullSmallC.png" />
+    <Content Include="Graphics\Entities\Actors\SkullSmallD.png" />
+    <Content Include="Graphics\Entities\Actors\SkullSmallE.png" />
+    <Content Include="Graphics\Entities\Actors\SkullSmallF.png" />
+    <Content Include="Graphics\Entities\Actors\SkullSmallG.png" />
+    <Content Include="Graphics\Entities\Actors\SkullSmallH.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeA.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeB.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeC.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeD.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeE.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeF.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeG.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeH.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeI.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeJ.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeK.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeL.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeM.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeN.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeO.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeP.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeSmallA.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeSmallB.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeSmallC.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeSmallD.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeSmallE.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeSmallerA.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeSmallerB.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeSmallerC.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeSmallerD.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeSmallerE.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeSmallerF.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeSmallerG.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeSmallF.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeSmallG.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeSmallH.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeSmallI.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeSquareA.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeSquareB.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeSquareC.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeSquareD.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeSquareE.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeSquareF.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeSquareG.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeSquareH.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeSquareI.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeSquareJ.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeSquareK.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeSquareL.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeSquareSmallA.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeSquareSmallB.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeSquareSmallC.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeSquareSmallD.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeSquareSmallE.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeSquareSmallerA.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeSquareSmallerB.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeSquareSmallerC.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeSquareSmallerD.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeSquareSmallerE.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeSquareSmallerF.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeSquareSmallerG.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeSquareSmallerH.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeSquareSmallerI.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeSquareSmallerJ.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeSquareSmallF.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeSquareSmallG.png" />
+    <Content Include="Graphics\Entities\Actors\SlimeSquareSmallH.png" />
+    <Content Include="Graphics\Entities\Actors\SlugA.png" />
+    <Content Include="Graphics\Entities\Actors\SlugB.png" />
+    <Content Include="Graphics\Entities\Actors\SlugC.png" />
+    <Content Include="Graphics\Entities\Actors\SlugD.png" />
+    <Content Include="Graphics\Entities\Actors\SlugE.png" />
+    <Content Include="Graphics\Entities\Actors\SlugF.png" />
+    <Content Include="Graphics\Entities\Actors\SlugG.png" />
+    <Content Include="Graphics\Entities\Actors\SnakeA.png" />
+    <Content Include="Graphics\Entities\Actors\SnakeB.png" />
+    <Content Include="Graphics\Entities\Actors\SnakeC.png" />
+    <Content Include="Graphics\Entities\Actors\SnakeD.png" />
+    <Content Include="Graphics\Entities\Actors\SnakeE.png" />
+    <Content Include="Graphics\Entities\Actors\SnakeF.png" />
+    <Content Include="Graphics\Entities\Actors\SnakeG.png" />
+    <Content Include="Graphics\Entities\Actors\SnakeH.png" />
+    <Content Include="Graphics\Entities\Actors\SnakeI.png" />
+    <Content Include="Graphics\Entities\Actors\SnakeJ.png" />
+    <Content Include="Graphics\Entities\Actors\SnakeK.png" />
+    <Content Include="Graphics\Entities\Actors\SnakeL.png" />
+    <Content Include="Graphics\Entities\Actors\SpaceA.png" />
+    <Content Include="Graphics\Entities\Actors\SparksA.png" />
+    <Content Include="Graphics\Entities\Actors\SphereA.png" />
+    <Content Include="Graphics\Entities\Actors\SphereB.png" />
+    <Content Include="Graphics\Entities\Actors\SphereC.png" />
+    <Content Include="Graphics\Entities\Actors\SphereD.png" />
+    <Content Include="Graphics\Entities\Actors\SquirrelA.png" />
+    <Content Include="Graphics\Entities\Actors\SquirrelB.png" />
+    <Content Include="Graphics\Entities\Actors\SwordA.png" />
+    <Content Include="Graphics\Entities\Actors\SwordB.png" />
+    <Content Include="Graphics\Entities\Actors\TentacleA.png" />
+    <Content Include="Graphics\Entities\Actors\TentacleB.png" />
+    <Content Include="Graphics\Entities\Actors\TentacleC.png" />
+    <Content Include="Graphics\Entities\Actors\TentacleD.png" />
+    <Content Include="Graphics\Entities\Actors\TentacleE.png" />
+    <Content Include="Graphics\Entities\Actors\TentacleF.png" />
+    <Content Include="Graphics\Entities\Actors\WaterA.png" />
+    <Content Include="Graphics\Entities\Actors\WaterSmallA.png" />
+    <Content Include="Graphics\Entities\Actors\WeaselA.png" />
+    <Content Include="Graphics\Entities\Actors\WeaselB.png" />
+    <Content Include="Graphics\Entities\Actors\WeaselC.png" />
+    <Content Include="Graphics\Entities\Actors\WitchA.png" />
+    <Content Include="Graphics\Entities\Actors\WitchB.png" />
+    <Content Include="Graphics\Entities\Actors\WitchC.png" />
+    <Content Include="Graphics\Entities\Actors\WitchD.png" />
+    <Content Include="Graphics\Entities\Actors\WitchE.png" />
+    <Content Include="Graphics\Entities\Actors\WitchF.png" />
+    <Content Include="Graphics\Entities\Actors\WormA.png" />
+    <Content Include="Graphics\Entities\Actors\WormB.png" />
+    <Content Include="Graphics\Entities\Actors\WormC.png" />
+    <Content Include="Graphics\Entities\Actors\WormD.png" />
+    <Content Include="Graphics\Entities\Actors\WormE.png" />
+    <Content Include="Graphics\Entities\Actors\WormF.png" />
+    <Content Include="Graphics\Entities\Actors\WormG.png" />
+    <Content Include="Graphics\Entities\Actors\WormH.png" />
+    <Content Include="Graphics\Entities\Actors\ZombieA.png" />
+    <Content Include="Graphics\Entities\Actors\ZombieB.png" />
+    <Content Include="Graphics\Entities\Effects\Block.png" />
+    <Content Include="Graphics\Entities\Effects\BloodSplatter0.png" />
+    <Content Include="Graphics\Entities\Effects\BloodSplatter1.png" />
+    <Content Include="Graphics\Entities\Effects\BloodSplatter2.png" />
+    <Content Include="Graphics\Entities\Effects\BloodSplatter3.png" />
+    <Content Include="Graphics\Entities\Effects\Box.png" />
+    <Content Include="Graphics\Entities\Effects\Bubble.png" />
+    <Content Include="Graphics\Entities\Effects\Circle.png" />
+    <Content Include="Graphics\Entities\Effects\Claw.png" />
+    <Content Include="Graphics\Entities\Effects\Consume0.png" />
+    <Content Include="Graphics\Entities\Effects\Consume1.png" />
+    <Content Include="Graphics\Entities\Effects\Consume2.png" />
+    <Content Include="Graphics\Entities\Effects\Dark.png" />
+    <Content Include="Graphics\Entities\Effects\Earth0.png" />
+    <Content Include="Graphics\Entities\Effects\Earth1.png" />
+    <Content Include="Graphics\Entities\Effects\Earth2.png" />
+    <Content Include="Graphics\Entities\Effects\Electric.png" />
+    <Content Include="Graphics\Entities\Effects\ExplodeA.png" />
+    <Content Include="Graphics\Entities\Effects\ExplodeB.png" />
+    <Content Include="Graphics\Entities\Effects\ExplodeC.png" />
+    <Content Include="Graphics\Entities\Effects\ExplodeD.png" />
+    <Content Include="Graphics\Entities\Effects\ExplodeE.png" />
+    <Content Include="Graphics\Entities\Effects\Fire0.png" />
+    <Content Include="Graphics\Entities\Effects\Fire1.png" />
+    <Content Include="Graphics\Entities\Effects\Fire2.png" />
+    <Content Include="Graphics\Entities\Effects\Flame.png" />
+    <Content Include="Graphics\Entities\Effects\FlameAlt.png" />
+    <Content Include="Graphics\Entities\Effects\Footprints.png" />
+    <Content Include="Graphics\Entities\Effects\FootprintsSand.png" />
+    <Content Include="Graphics\Entities\Effects\FootprintsSandNight.png" />
+    <Content Include="Graphics\Entities\Effects\Glint.png" />
+    <Content Include="Graphics\Entities\Effects\Heal0Back.png" />
+    <Content Include="Graphics\Entities\Effects\Heal0Fore.png" />
+    <Content Include="Graphics\Entities\Effects\Heal1Back.png" />
+    <Content Include="Graphics\Entities\Effects\Heal1Fore.png" />
+    <Content Include="Graphics\Entities\Effects\Ice0.png" />
+    <Content Include="Graphics\Entities\Effects\Ice1.png" />
+    <Content Include="Graphics\Entities\Effects\Ice2.png" />
+    <Content Include="Graphics\Entities\Effects\Lightning.png" />
+    <Content Include="Graphics\Entities\Effects\NuclearA0.png" />
+    <Content Include="Graphics\Entities\Effects\NuclearA1.png" />
+    <Content Include="Graphics\Entities\Effects\NuclearB0.png" />
+    <Content Include="Graphics\Entities\Effects\NuclearB1.png" />
+    <Content Include="Graphics\Entities\Effects\Path.png" />
+    <Content Include="Graphics\Entities\Effects\Poison.png" />
+    <Content Include="Graphics\Entities\Effects\Puff.png" />
+    <Content Include="Graphics\Entities\Effects\Select0.png" />
+    <Content Include="Graphics\Entities\Effects\Select1.png" />
+    <Content Include="Graphics\Entities\Effects\Shield0.png" />
+    <Content Include="Graphics\Entities\Effects\Shield1.png" />
+    <Content Include="Graphics\Entities\Effects\Shield2.png" />
+    <Content Include="Graphics\Entities\Effects\Shield3.png" />
+    <Content Include="Graphics\Entities\Effects\Sick.png" />
+    <Content Include="Graphics\Entities\Effects\Slash0.png" />
+    <Content Include="Graphics\Entities\Effects\Slash1.png" />
+    <Content Include="Graphics\Entities\Effects\Sleep.png" />
+    <Content Include="Graphics\Entities\Effects\SleepFlip.png" />
+    <Content Include="Graphics\Entities\Effects\SlimeSplatter0.png" />
+    <Content Include="Graphics\Entities\Effects\SlimeSplatter1.png" />
+    <Content Include="Graphics\Entities\Effects\SlimeSplatter2.png" />
+    <Content Include="Graphics\Entities\Effects\SlimeSplatter3.png" />
+    <Content Include="Graphics\Entities\Effects\Spark0.png" />
+    <Content Include="Graphics\Entities\Effects\Spark1.png" />
+    <Content Include="Graphics\Entities\Effects\Square0Back.png" />
+    <Content Include="Graphics\Entities\Effects\Square0Fore.png" />
+    <Content Include="Graphics\Entities\Effects\Square1Back.png" />
+    <Content Include="Graphics\Entities\Effects\Square1Fore.png" />
+    <Content Include="Graphics\Entities\Effects\Star.png" />
+    <Content Include="Graphics\Entities\Effects\Teleport0.png" />
+    <Content Include="Graphics\Entities\Effects\Teleport1.png" />
+    <Content Include="Graphics\Entities\Effects\Teleport2.png" />
+    <Content Include="Graphics\Entities\Effects\Touch0.png" />
+    <Content Include="Graphics\Entities\Effects\Touch1.png" />
+    <Content Include="Graphics\Entities\Effects\Warp0.png" />
+    <Content Include="Graphics\Entities\Effects\Warp1.png" />
+    <Content Include="Graphics\Entities\Effects\Water.png" />
+    <Content Include="Graphics\Entities\Effects\WebBack.png" />
+    <Content Include="Graphics\Entities\Effects\WebFore.png" />
+    <Content Include="Graphics\Entities\Items\Items.png" />
+    <Content Include="Graphics\Entities\Player\roguelikeChar.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\Entities\Player\roguelikeChar_spritesheetInfo.txt" />
+    <Content Include="Graphics\Fonts\C64.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\Fonts\IBM.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\Fonts\IBM8x16_NoPadding_extended.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\Fonts\SuperBlack.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\Fonts\SuperWhite.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\Fonts\Venice.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\Tiles\DungeonTiles.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\Tiles\RPGblocks_spritesheet%402.png" />
+    <Content Include="Graphics\Tiles\RPGblocks_spritesheet%402.xml" />
+    <Content Include="Graphics\Tiles\RPGblocks_spritesheet.png" />
+    <Content Include="Graphics\Tiles\RPGblocks_spritesheet.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\MonoGame.Framework.DesktopGL.3.7.0.1708\build\MonoGame.Framework.DesktopGL.targets" Condition="Exists('packages\MonoGame.Framework.DesktopGL.3.7.0.1708\build\MonoGame.Framework.DesktopGL.targets')" />

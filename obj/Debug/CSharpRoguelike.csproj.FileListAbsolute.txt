@@ -1,8 +1,3 @@
-D:\Game Design\TBCRoguelike\CSharpRoguelike\CSharpRoguelike\bin\Debug\Graphics\Fonts\Cheepicus_12x12.png
-D:\Game Design\TBCRoguelike\CSharpRoguelike\CSharpRoguelike\bin\Debug\Graphics\Fonts\IBM8x16.png
-D:\Game Design\TBCRoguelike\CSharpRoguelike\CSharpRoguelike\bin\Debug\Graphics\Fonts\Yayo_c64.png
-D:\Game Design\TBCRoguelike\CSharpRoguelike\CSharpRoguelike\bin\Debug\Graphics\Fonts\C64.font
-D:\Game Design\TBCRoguelike\CSharpRoguelike\CSharpRoguelike\bin\Debug\Graphics\Fonts\Cheepicus12.font
 D:\Game Design\TBCRoguelike\CSharpRoguelike\CSharpRoguelike\bin\Debug\Graphics\Fonts\IBM.font
 D:\Game Design\TBCRoguelike\CSharpRoguelike\CSharpRoguelike\bin\Debug\CSharpRoguelike.exe.config
 D:\Game Design\TBCRoguelike\CSharpRoguelike\CSharpRoguelike\bin\Debug\CSharpRoguelike.exe
@@ -118,9 +113,24 @@ D:\Game Design\TBCRoguelike\CSharpRoguelike\CSharpRoguelike\bin\Debug\Priority Q
 D:\Game Design\TBCRoguelike\CSharpRoguelike\CSharpRoguelike\bin\Debug\Priority Queue.xml
 D:\Game Design\TBCRoguelike\CSharpRoguelike\CSharpRoguelike\bin\Debug\SadConsole.xml
 D:\Game Design\TBCRoguelike\CSharpRoguelike\CSharpRoguelike\bin\Debug\Troschuetz.Random.xml
-D:\Game Design\TBCRoguelike\CSharpRoguelike\CSharpRoguelike\obj\Debug\CSharpRoguelike.csprojAssemblyReference.cache
 D:\Game Design\TBCRoguelike\CSharpRoguelike\CSharpRoguelike\obj\Debug\CSharpRoguelike.exe.config
 D:\Game Design\TBCRoguelike\CSharpRoguelike\CSharpRoguelike\obj\Debug\CSharpRoguelike.csproj.CoreCompileInputs.cache
 D:\Game Design\TBCRoguelike\CSharpRoguelike\CSharpRoguelike\obj\Debug\CSharpRoguelike.csproj.CopyComplete
 D:\Game Design\TBCRoguelike\CSharpRoguelike\CSharpRoguelike\obj\Debug\CSharpRoguelike.exe
 D:\Game Design\TBCRoguelike\CSharpRoguelike\CSharpRoguelike\obj\Debug\CSharpRoguelike.pdb
+D:\Game Design\TBCRoguelike\CSharpRoguelike\CSharpRoguelike\bin\Debug\Graphics\Fonts\IBM_ext.font
+D:\Game Design\TBCRoguelike\CSharpRoguelike\CSharpRoguelike\bin\Debug\Graphics\Fonts\IBM.png
+D:\Game Design\TBCRoguelike\CSharpRoguelike\CSharpRoguelike\bin\Debug\Graphics\Fonts\IBM8x16_NoPadding_extended.png
+D:\Game Design\TBCRoguelike\CSharpRoguelike\CSharpRoguelike\bin\Debug\Graphics\Fonts\SuperBlack.png
+D:\Game Design\TBCRoguelike\CSharpRoguelike\CSharpRoguelike\bin\Debug\Graphics\Fonts\SuperWhite.png
+D:\Game Design\TBCRoguelike\CSharpRoguelike\CSharpRoguelike\bin\Debug\Graphics\Fonts\Venice.png
+D:\Game Design\TBCRoguelike\CSharpRoguelike\CSharpRoguelike\bin\Debug\Graphics\Fonts\SuperBlack.font
+D:\Game Design\TBCRoguelike\CSharpRoguelike\CSharpRoguelike\bin\Debug\Graphics\Fonts\SuperWhite.font
+D:\Game Design\TBCRoguelike\CSharpRoguelike\CSharpRoguelike\bin\Debug\Graphics\Fonts\Venice.font
+D:\Game Design\TBCRoguelike\CSharpRoguelike\CSharpRoguelike\bin\Debug\Graphics\Entities\Player\roguelikeChar.png
+D:\Game Design\TBCRoguelike\CSharpRoguelike\CSharpRoguelike\bin\Debug\Graphics\Entities\Player\roguelikeChar.font
+D:\Game Design\TBCRoguelike\CSharpRoguelike\CSharpRoguelike\obj\Debug\CSharpRoguelike.csprojAssemblyReference.cache
+D:\Game Design\TBCRoguelike\CSharpRoguelike\CSharpRoguelike\bin\Debug\Graphics\Tiles\DungeonTiles.png
+D:\Game Design\TBCRoguelike\CSharpRoguelike\CSharpRoguelike\bin\Debug\Graphics\Tiles\DungeonTiles.font
+D:\Game Design\TBCRoguelike\CSharpRoguelike\CSharpRoguelike\bin\Debug\Graphics\Fonts\C64.png
+D:\Game Design\TBCRoguelike\CSharpRoguelike\CSharpRoguelike\bin\Debug\Graphics\Fonts\C64.font

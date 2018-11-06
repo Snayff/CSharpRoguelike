@@ -2,7 +2,7 @@
 using GoRogue.MapViews;
 
 
-namespace CSharpRoguelike.Map.Generation
+namespace CSharpRoguelike.Map
 {
 
     class MapGeneration

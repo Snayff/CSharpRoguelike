@@ -31,12 +31,12 @@ namespace CSharpRoguelike
         private static Window messageConsole;
 
         //map console info
-        private static readonly int viewportWidth = screenWidth - infoWidth - (borderSize * 2);
+        private static readonly int viewportWidth = (screenWidth - infoWidth - (borderSize * 2))  / 2 - 1; //mapconsole  uses a square font which is twice the width of the other consoles
         private static readonly int viewportHeight = screenHeight -  messageHeight - (borderSize * 2 );
         private static readonly int mapWidth = viewportWidth + 20; 
         private static readonly int mapHeight = viewportHeight  + 20; 
         private static Point mapPosition = new Point(0 + borderSize, 0 + borderSize);
-        public static EntityConsole mapConsole;
+        public static MapConsole mapConsole;
 
         //RNG seed
         private static readonly int seed = 123456789; //set the game seed
@@ -70,6 +70,7 @@ namespace CSharpRoguelike
             if (Input.InputController.CheckKeyboard())
             {
                 Input.InputController.ProcessInput();
+                mapConsole.CenterViewPortOnPoint(mapConsole.player.Position);
             }
         }
 
@@ -79,20 +80,20 @@ namespace CSharpRoguelike
             GoRogue.Random.SingletonRandom.DefaultRNG = new Troschuetz.Random.Generators.XorShift128Generator(seed);
 
             // Set our new console as the thing to render and process
-            Global.CurrentScreen = new ScreenObject();
+            SadConsole.Global.CurrentScreen = new ScreenObject();
 
             //map Console
-            mapConsole = new EntityConsole(mapWidth, mapHeight, viewportWidth, viewportHeight);
+            mapConsole = new MapConsole(mapWidth, mapHeight, viewportWidth, viewportHeight);
             mapConsole.Position = mapPosition;
-            Global.CurrentScreen.Children.Add(mapConsole);
-            Global.FocusedConsoles.Set(mapConsole);
+            SadConsole.Global.CurrentScreen.Children.Add(mapConsole);
+            SadConsole.Global.FocusedConsoles.Set(mapConsole);
 
             //create the map and update the tileArray with Tile values
-            Map.Generation.MapGeneration.CreateMap(mapWidth, mapHeight, 20, 7, 22, 10);
+            Map.MapGeneration.CreateMap(mapWidth, mapHeight, 20, 7, 22, 10);
             mapConsole.SetCellsToTileArray();
 
             //move the player to a valid position
-            var validPosition = Map.Generation.MapGeneration.mapData.RandomPosition(true);
+            var validPosition = Map.MapGeneration.mapData.RandomPosition(true);
             mapConsole.player.Position = new Point(validPosition.X, validPosition.Y);
 
             //Info Console
@@ -100,14 +101,14 @@ namespace CSharpRoguelike
             infoConsole.Position = infoPosition;
             infoConsole.Fill(Color.White, Color.Orange, 0);
             infoConsole.Print(1, 1, "Info");
-            Global.CurrentScreen.Children.Add(infoConsole);
+            SadConsole.Global.CurrentScreen.Children.Add(infoConsole);
 
             //Message Console
             messageConsole = new Window(messageWidth, messageHeight);
             messageConsole.Position = messagePosition;
             messageConsole.Fill(Color.White, Color.Purple, 0);
             messageConsole.Print(1, 1, "Message");
-            Global.CurrentScreen.Children.Add(messageConsole);
+            SadConsole.Global.CurrentScreen.Children.Add(messageConsole);
             messageConsole.Show(); //as its a window need to declare its visible
 
             //centre view on player
