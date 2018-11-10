@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using SadConsole;
+using CSharpRoguelike.Controller;
 
 namespace CSharpRoguelike.EntityType
 {
@@ -8,7 +9,7 @@ namespace CSharpRoguelike.EntityType
 
         public Player() : base(Color.White, Color.Transparent, 1)
         {
-            font = FontManager.playerFontMaster.GetFont(Font.FontSizes.One);
+            font = FontController.playerFontMaster.GetFont(Font.FontSizes.One);
             Animation.Font = font;
         }
     }

@@ -1,22 +1,24 @@
-﻿using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
+using CSharpRoguelike;
 
 
-namespace CSharpRoguelike.Input
+
+namespace CSharpRoguelike.Controller
 {
-    public static class InputController
+    public class InputController
     {
 
         //if (Global.KeyboardState.IsKeyReleased(Microsoft.Xna.Framework.Input.Keys.F5))
         //{
         //    SadConsole.Settings.ToggleFullScreen();
         //}
-        static private bool inpUp;
-        static private bool inpDown;
-        static private bool inpLeft;
-        static private bool inpRight;
+        private bool inpUp;
+        private bool inpDown;
+        private bool inpLeft;
+        private bool inpRight;
 
-        public static bool CheckKeyboard()
+        public bool CheckKeyboard()
         {
             bool keyHit = false;
             var input = SadConsole.Global.KeyboardState;
@@ -25,7 +27,7 @@ namespace CSharpRoguelike.Input
             inpLeft = false;
             inpRight = false;
 
-
+            //convert input into consolidated variables
             if ( input.IsKeyPressed(Keys.Up))
             {
                 inpUp = true;
@@ -62,39 +64,39 @@ namespace CSharpRoguelike.Input
         }   
     
 
-        public static void ProcessInput() 
+        public void ProcessInput() 
         {
             
             //Movement
             if (inpUp)
             {
-                //chck if 
-                if (GameLoop.mapConsole.player.CheckTargetLocationIsValid(new Point(0, -1)))
+                //check if entity can move to the new location
+                if (ControllerManager.entityController.player.CheckTargetLocationIsValid(new Point(0, -1)))
                 {
-                    GameLoop.mapConsole.player.Move(new Point(0, -1));
+                    ControllerManager.entityController.player.Move(new Point(0, -1));
                 }
             }
             else if (inpDown)
             {
-                if (GameLoop.mapConsole.player.CheckTargetLocationIsValid(new Point(0, 1)))
+                if (ControllerManager.entityController.player.CheckTargetLocationIsValid(new Point(0, 1)))
                 {
-                    GameLoop.mapConsole.player.Move(new Point(0, 1));
+                    ControllerManager.entityController.player.Move(new Point(0, 1));
                 }
             }
 
             if (inpLeft)
             {
-                if (GameLoop.mapConsole.player.CheckTargetLocationIsValid(new Point(-1, 0)))
+                if (ControllerManager.entityController.player.CheckTargetLocationIsValid(new Point(-1, 0)))
                 {
-                    GameLoop.mapConsole.player.Move(new Point(-1, 0));
+                    ControllerManager.entityController.player.Move(new Point(-1, 0));
                 }
                
             }
             else if (inpRight)
             {
-                if (GameLoop.mapConsole.player.CheckTargetLocationIsValid(new Point(1, 0)))
+                if (ControllerManager.entityController.player.CheckTargetLocationIsValid(new Point(1, 0)))
                 {
-                    GameLoop.mapConsole.player.Move(new Point(1, 0));
+                    ControllerManager.entityController.player.Move(new Point(1, 0));
                 }
                
             }

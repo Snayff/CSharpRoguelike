@@ -1,38 +1,37 @@
 ﻿using CSharpRoguelike.Map.Tile;
-using GoRogue.MapViews;
-
+using CSharpRoguelike.Controller;
 
 namespace CSharpRoguelike.Map
 {
 
-    class MapGeneration
+    public class MapGeneration
     {
-        public static ArrayMap<bool> mapData;
+        
 
         public static void CreateMap(int mapWidth, int mapHeight, int maxRooms, int roomMinSize, int roomMaxSize, int attemptsPerRoom)
         {
-            //create mapview
-            mapData = new ArrayMap<bool>(mapWidth, mapHeight);
 
             //create rooms on map
-            GoRogue.MapGeneration.Generators.RandomRoomsGenerator.Generate(mapData, maxRooms, roomMinSize, roomMaxSize, attemptsPerRoom);
+            GoRogue.MapGeneration.Generators.RandomRoomsGenerator.Generate(ControllerManager.mapController.mapData, maxRooms, roomMinSize, roomMaxSize, attemptsPerRoom);
 
             for (int y = 0; y < mapHeight; y++)
             {
                 for (int x = 0; x < mapWidth; x++)
                 {
                     //mapData contains true for a passable tile (floor) and false for a non passable tile (wall)
-                    if (mapData[x, y])
+                    if (ControllerManager.mapController.mapData[x, y])
                     {
-                        GameLoop.mapConsole.tileArray[GoRogue.Coord.ToIndex(x, y, mapWidth)] = new Floor();
+                        ControllerManager.mapController.tileArray[x, y] = new Floor();
                     }
                     else
                     {
-                        GameLoop.mapConsole.tileArray[GoRogue.Coord.ToIndex(x, y, mapWidth)] = new Wall();
+                        ControllerManager.mapController.tileArray[x, y] = new Wall();
                     }
                 }
             }
         }
+
+
     }
 }
 

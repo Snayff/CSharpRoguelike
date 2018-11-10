@@ -103,16 +103,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Code\Controller\ControllerManager.cs" />
     <Compile Include="Code\Core\Colour.cs" />
+    <Compile Include="Code\Controller\EntityController.cs" />
+    <Compile Include="Code\Controller\MapController.cs" />
     <Compile Include="Code\Core\Palette.cs" />
+    <Compile Include="Code\Controller\ScreenController.cs" />
     <Compile Include="Code\CustomConsole\MapConsole.cs" />
     <Compile Include="Code\Core\GameLoop.cs" />
-    <Compile Include="Code\Core\InputController.cs" />
-    <Compile Include="Code\Core\FontManager.cs" />
+    <Compile Include="Code\Controller\InputController.cs" />
+    <Compile Include="Code\Controller\FontController.cs" />
     <Compile Include="Code\EntityType\Actor.cs" />
     <Compile Include="Code\EntityType\EntityType.cs" />
     <Compile Include="Code\EntityType\Player.cs" />
-    <Compile Include="Code\Map\MapGeneration.cs" />
+    <Compile Include="Code\Map\Generation\MapGeneration.cs" />
     <Compile Include="Code\Map\Tile\Floor.cs" />
     <Compile Include="Code\Map\Tile\TileBase.cs" />
     <Compile Include="Code\Map\Tile\Wall.cs" />

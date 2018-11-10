@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CSharpRoguelike.Controller;
+using Microsoft.Xna.Framework;
 
 
 namespace CSharpRoguelike.EntityType
@@ -23,7 +24,7 @@ namespace CSharpRoguelike.EntityType
         public bool CheckTargetLocationIsValid(Point relativePosition)
         {
             // Check the map if we can move to this new position
-            if (GameLoop.mapConsole.IsTileWalkable(Position + relativePosition))
+            if (ControllerManager.mapController.IsTileWalkable(Position + relativePosition))
             {
                 return true;
             }

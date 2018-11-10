@@ -9,7 +9,7 @@ namespace CSharpRoguelike.Map.Tile
             Name = "Floor";
             //Foreground = Color.Transparent;
             //Background = Color.Transparent;
-            Glyph = 6;
+            Glyph = 2;
 
             IsBlockingMove = false;
             IsBlockingSight = false;

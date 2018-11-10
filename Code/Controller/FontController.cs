@@ -1,8 +1,8 @@
 ﻿using SadConsole;
 
-namespace CSharpRoguelike
+namespace CSharpRoguelike.Controller
 {
-    public static class FontManager
+    public static class FontController
     {
         public static FontMaster playerFontMaster = Global.LoadFont("Graphics/Entities/Player/RogueLikeChar.font");
         public static FontMaster actorFontMaster = Global.LoadFont("Graphics/Entities/Player/RogueLikeChar.font");
