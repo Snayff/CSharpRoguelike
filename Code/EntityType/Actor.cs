@@ -24,7 +24,7 @@ namespace CSharpRoguelike.EntityType
         public bool CheckTargetLocationIsValid(Point relativePosition)
         {
             // Check the map if we can move to this new position
-            if (ControllerManager.mapController.IsTileWalkable(Position + relativePosition))
+            if (ControllerContainer.MapController.IsTileWalkable(Position + relativePosition))
             {
                 return true;
             }

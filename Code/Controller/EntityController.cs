@@ -6,7 +6,7 @@ namespace CSharpRoguelike.Controller
     public class EntityController
     {
 
-        public EntityType.Player player;
+        public EntityType.Player Player;
         
         public EntityController()
         {
@@ -15,17 +15,17 @@ namespace CSharpRoguelike.Controller
 
         private void CreatePlayer()
         {
-            player = new EntityType.Player();
-            ScreenController.mapConsole.manager.Entities.Add(player);
-            player.Position = new Point(1, 1);
-            player.PreviousPosition = player.Position;
+            Player = new EntityType.Player();
+            ScreenController.MapConsole.EntityManager.Entities.Add(Player);
+            Player.Position = new Point(1, 1);
+            Player.PreviousPosition = Player.Position;
         }
 
         public void MovePlayerToValidPosition()
         {
             //move the player to a valid position
-            var validPosition = ControllerManager.mapController.mapData.RandomPosition(true);
-            player.Position = new Point(validPosition.X, validPosition.Y);
+            var validPosition = ControllerContainer.MapController.MapData.RandomPosition(true);
+            Player.Position = new Point(validPosition.X, validPosition.Y);
         }
 
     }

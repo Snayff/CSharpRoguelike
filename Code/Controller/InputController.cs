@@ -71,32 +71,32 @@ namespace CSharpRoguelike.Controller
             if (inpUp)
             {
                 //check if entity can move to the new location
-                if (ControllerManager.entityController.player.CheckTargetLocationIsValid(new Point(0, -1)))
+                if (ControllerContainer.EntityController.Player.CheckTargetLocationIsValid(new Point(0, -1)))
                 {
-                    ControllerManager.entityController.player.Move(new Point(0, -1));
+                    ControllerContainer.EntityController.Player.Move(new Point(0, -1));
                 }
             }
             else if (inpDown)
             {
-                if (ControllerManager.entityController.player.CheckTargetLocationIsValid(new Point(0, 1)))
+                if (ControllerContainer.EntityController.Player.CheckTargetLocationIsValid(new Point(0, 1)))
                 {
-                    ControllerManager.entityController.player.Move(new Point(0, 1));
+                    ControllerContainer.EntityController.Player.Move(new Point(0, 1));
                 }
             }
 
             if (inpLeft)
             {
-                if (ControllerManager.entityController.player.CheckTargetLocationIsValid(new Point(-1, 0)))
+                if (ControllerContainer.EntityController.Player.CheckTargetLocationIsValid(new Point(-1, 0)))
                 {
-                    ControllerManager.entityController.player.Move(new Point(-1, 0));
+                    ControllerContainer.EntityController.Player.Move(new Point(-1, 0));
                 }
                
             }
             else if (inpRight)
             {
-                if (ControllerManager.entityController.player.CheckTargetLocationIsValid(new Point(1, 0)))
+                if (ControllerContainer.EntityController.Player.CheckTargetLocationIsValid(new Point(1, 0)))
                 {
-                    ControllerManager.entityController.player.Move(new Point(1, 0));
+                    ControllerContainer.EntityController.Player.Move(new Point(1, 0));
                 }
                
             }

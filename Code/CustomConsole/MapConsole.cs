@@ -15,7 +15,7 @@ namespace CSharpRoguelike.CustomConsole
         // entity to walk around on. The console also gets focused with the keyboard and accepts keyboard events.
 
         private Basic borderSurface;
-        public EntityManager manager = new EntityManager();
+        public EntityManager EntityManager = new EntityManager();
 
 
         public MapConsole(int width, int height, int viewWidth, int viewHeight) : base(width, height, FontController.mapFontMaster.GetFont(Font.FontSizes.One), new Rectangle(0, 0, width, height))
@@ -26,22 +26,22 @@ namespace CSharpRoguelike.CustomConsole
 
             //draw border
             borderSurface = new Basic(viewWidth + 2, viewHeight + 2, FontController.borderFontMaster.GetFont(Font.FontSizes.One));
-            borderSurface.DrawBox(new Rectangle(0, 0, borderSurface.Width, borderSurface.Height), new Cell(Colour.borderColour, Color.Black), null, SurfaceBase.ConnectedLineThick);
+            borderSurface.DrawBox(new Rectangle(0, 0, borderSurface.Width, borderSurface.Height), new Cell(Colour.BorderColour, Color.Black), null, SurfaceBase.ConnectedLineThick);
             borderSurface.Position = new Point(-1, -1); //offset to draw AROUND the console
             Children.Add(borderSurface);
 
             //create entity manager
-            Children.Add(manager);
+            Children.Add(EntityManager);
 
         }
 
 
         public void UpdateCellsToCellArray()
         {
-            ControllerManager.mapController.ConvertTileArrayToCellArray();
+            ControllerContainer.MapController.ConvertTileArrayToCellArray();
 
             //assign tile array to console cells
-            Cells = ControllerManager.mapController.cellArray;
+            Cells = ControllerContainer.MapController.CellArray;
         }
 
     }

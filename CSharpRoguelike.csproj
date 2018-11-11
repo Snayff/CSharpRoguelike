@@ -103,7 +103,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Code\Controller\ControllerManager.cs" />
+    <Compile Include="Code\Controller\ControllerContainer.cs" />
     <Compile Include="Code\Core\Colour.cs" />
     <Compile Include="Code\Controller\EntityController.cs" />
     <Compile Include="Code\Controller\MapController.cs" />

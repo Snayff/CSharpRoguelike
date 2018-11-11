@@ -4,11 +4,11 @@ namespace CSharpRoguelike
 {
     public class Colour
     {
-        public static Color borderColour = Palette.tertiaryLighter;
-        public static Color infoConsoleFillColour = Palette.primaryDarker;
-        public static Color messageConsoleFillColour = Palette.complementDarker;
+        public static Color BorderColour = Palette.TertiaryLighter;
+        public static Color InfoConsoleFillColour = Palette.PrimaryDarker;
+        public static Color MessageConsoleFillColour = Palette.ComplementDarker;
 
-        public static Color defaultTextColour = Color.White;
+        public static Color DefaultTextColour = Color.White;
 
     }
 }
