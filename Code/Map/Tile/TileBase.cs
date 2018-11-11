@@ -9,11 +9,15 @@ namespace CSharpRoguelike.Map.Tile
     {
         public bool IsBlockingMove;
         public bool IsBlockingSight;
+        public bool HasBeenSeen;
+        public bool IsInView;
         public string Name;
+
 
         public TileBase() : base()
         {
-
+            IsInView = false;
+            HasBeenSeen = false;
         }
     }
 

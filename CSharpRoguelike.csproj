@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{C03ADE49-96B8-42C3-B3C6-F76EBD16253E}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>CSharpRoguelike</RootNamespace>
     <AssemblyName>CSharpRoguelike</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>

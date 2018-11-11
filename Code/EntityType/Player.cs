@@ -9,7 +9,7 @@ namespace CSharpRoguelike.EntityType
 
         public Player() : base(Color.White, Color.Transparent, 1)
         {
-            font = FontController.playerFontMaster.GetFont(Font.FontSizes.One);
+            font = FontController.PlayerFontMaster.GetFont(Font.FontSizes.One);
             Animation.Font = font;
         }
     }

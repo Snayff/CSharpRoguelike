@@ -36,11 +36,13 @@ namespace CSharpRoguelike
         private static void Update(GameTime time)
         {
             //check for input
-            if (ControllerContainer.InputController.CheckKeyboard())
-            {
-                ControllerContainer.InputController.ProcessInput();
-                ScreenController.MapConsole.CenterViewPortOnPoint(ControllerContainer.EntityController.Player.Position);
-            }
+            //if (ControllerContainer.InputController.CheckKeyboard())
+            //{
+            //    ControllerContainer.InputController.ProcessInput();
+            //    ScreenController.MapConsole.CenterViewPortOnPoint(ControllerContainer.EntityController.Player.Position);
+            //    ControllerContainer.MapController.RefreshFov();
+            //    ControllerContainer.MapController.UpdateTileDrawInfo();
+            //}
         }
 
         private static void Init()
@@ -53,13 +55,15 @@ namespace CSharpRoguelike
 
 
             //create map
-            Map.MapGeneration.CreateMap(ControllerContainer.MapController.MapWidth, ControllerContainer.MapController.MapHeight, 20, 7, 22, 10); //updates mapData and tileArray
+            Map.MapGeneration.CreateMap(20, 7, 22, 10); //updates mapData and tileArray
             ControllerContainer.EntityController.MovePlayerToValidPosition();
             ScreenController.MapConsole.CenterViewPortOnPoint(ControllerContainer.EntityController.Player.Position);
 
             //update tile info on map
             ScreenController.MapConsole.UpdateCellsToCellArray(); //move the cell data into the console
             ScreenController.MapConsole.CenterViewPortOnPoint(ControllerContainer.EntityController.Player.Position);
+            ControllerContainer.MapController.RefreshFov();
+            ControllerContainer.MapController.UpdateTileDrawInfo();
         }
     }
 }
